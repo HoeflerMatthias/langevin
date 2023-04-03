@@ -4,10 +4,10 @@ The implementations are based on PyTorch.
 
 <!-- TOC -->
 1. [Introduction](#introduction)
-2. [Langevin Monte Carlo Samling Algorithm](#lmc)
-3. [Maximum Likelihood Training](#maxlike)
-4. [Further Usages](#use)
-   1. [Image Reconstruction](#reconstruction)
+2. [Langevin Monte Carlo Samling Algorithm](#langevin-monte-carlo-samling-algorithm)
+3. [Maximum Likelihood Training](#maximum-likelihood-training)
+4. [Further Usages](#further-usages)
+   1. [Image Reconstruction](#image-reconstruction)
 <!-- TOC -->
 
 ## Introduction
@@ -24,7 +24,7 @@ The "advanced" examples are based on the MNIST dataset.
 
 The <code>LangevinSampler</code> class from Langevin.py implements the basic unadjusted LMC algorithm according to the 
 iteration scheme 
-$$x_{k+1}=x_k-\nabla f_\theta(x_k)+\sqrt(2h)z$$,
+$$x_{k+1}=x_k-\nabla f_\theta(x_k)+\sqrt{2h}z,$$
 where $z \sim \mathcal{N}(0,1)$ are independent standard normally distributed and $f_\theta(x)$ denotes the energy function.
 
 ## Maximum Likelihood Training
@@ -49,5 +49,5 @@ This section deals with the MNIST dataset together with an already trained model
 
 ### Image Reconstruction
 
-The idea is to use the energy function as $f_\theta$ regularization in order to solve the reconstruction problem
-$$ \min_{x} \sigma \| y - x \|_2^2 + \lambda f_\theta(x)$$.
+The idea is to use the energy function as $f_\theta$ regularization in order to solve for the reconstruction problem
+$$\min_x \sigma \| x - y \| ^2 + \lambda f_\theta (x).$$
