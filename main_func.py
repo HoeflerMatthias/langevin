@@ -1,6 +1,6 @@
 import torch.multiprocessing as mp
 import argparse
-
+import helper
 
 def main_func(args={}):
     #############################################
@@ -237,18 +237,21 @@ if __name__ == '__main__':
 
     plist = []
 
-    clipstr = '_clip' if clipping else ''
-    samplediststr = '_s'+str(sampledistance) if sampledistance > 1 else ''
-
     for seed in seeds:
         for batchsize in batchsizes:
             for lr in lrs:
                 for stepsize in stepsizes:
                     for burnin in burnins:
-                        filename = 'Langevin/'+directory+'/'+str(seed)+'_'+str(batchsize)+'_'+str(lr).replace('.', '')\
-                                   + '_'+str(stepsize).replace('.', '')+'_'+str(burnin)\
-                                   + ('_no' if hasScheduler is False else '')\
-                                   + ('_pre' if not modelpath == '' else '')+clipstr+samplediststr+'.pth'
+                        filename = helper.create_filename('Langevin/'+directory+'/', seed, [
+                            batchsize,
+                            lr,
+                            stepsize,
+                            burnin,
+                            '_no' if hasScheduler is False else '',
+                            '_pre' if not modelpath == '' else '',
+                            '_clip' if clipping else '',
+                            '_s'+str(sampledistance) if sampledistance > 1 else ''
+                        ])
                         p = mp.Process(target=main_func, args=[{
                             'dataset': dataset,
                             'model': model,
