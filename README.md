@@ -51,3 +51,7 @@ This section deals with the MNIST dataset together with an already trained model
 
 The idea is to use the energy function as $f_\theta$ regularization in order to solve for the reconstruction problem
 $$\min_x \sigma \| x - y \| ^2 + \lambda f_\theta (x).$$
+
+An example is given in reconstruction.ipynb.
+
+![Example of image reconstructed from original with added white noise](img/img_reconstruction.png "Image reconstruction")
