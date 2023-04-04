@@ -8,6 +8,7 @@ The implementations are based on PyTorch.
 3. [Maximum Likelihood Training](#maximum-likelihood-training)
 4. [Further Usages](#further-usages)
    1. [Image Reconstruction](#image-reconstruction)
+   2. [Inpainting](#inpainting)
 <!-- TOC -->
 
 ## Introduction
@@ -56,3 +57,12 @@ An example is given in reconstruction.ipynb. The below figure shows a particular
 dataset path need to be specified for reconstruction.ipynb to work.
 
 ![Example of image reconstructed from original with added white noise](img/img_reconstruction.png "Image reconstruction")
+
+### Inpainting
+
+Given some mask as on the figure below, can restrict the energy function to a masked area and consider only that area for 
+optimization. Example is given in inpainting.ipynb.
+
+![Example of image inpainting from masked original](img/img_inpainting.png "Image inpainting")
+
+![Example of image inpainting from masked original](img/img_inpainting.gif "Image inpainting")
